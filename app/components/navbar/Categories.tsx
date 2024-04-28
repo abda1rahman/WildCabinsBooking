@@ -9,10 +9,9 @@ import {
   GiCastle,
   GiCaveEntrance,
   GiForestCamp,
-  GiIsland,
   GiWindmill,
 } from "react-icons/gi";
-import { MdOutlineVilla } from "react-icons/md";
+import { MdFamilyRestroom, MdOutlineVilla } from "react-icons/md";
 import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
@@ -46,9 +45,9 @@ export const categories = [
     description: "This is property has a beautiful pool!",
   },
   {
-    label: "Islands",
-    icon: GiIsland,
-    description: "This property is on an island!",
+    label: "Family friendly",
+    icon: MdFamilyRestroom,
+    description: "This property for family",
   },
   {
     label: "Lake",

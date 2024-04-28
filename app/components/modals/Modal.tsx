@@ -131,6 +131,7 @@ function Modal({
               <button
                 type='button'
                 onClick={handleClose}
+                aria-label='Close modal'
                 className='
                 p-1
                 border-0
