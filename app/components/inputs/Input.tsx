@@ -27,10 +27,9 @@ function Input({
   return (
     <div className='w-full relative'>
       {formatPrice && (
-        <BiDollar
-          size={24}
-          className='text-neutral-700 absolute top-5 left-2'
-        />
+        <span className='text-neutral-700 absolute top-6 left-2 font-sans tracking-widest" '>
+          JD
+        </span>
       )}
       <input
         id={id}

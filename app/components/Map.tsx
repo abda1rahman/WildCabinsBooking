@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapProps {
-  center?: number[]
+  center?: number[] 
 }
 
 const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -27,8 +27,8 @@ const attribution =
 const Map: React.FC<MapProps> = ({center}) => {
   return <MapContainer
   center={center as L.LatLngExpression || [51, -0.09]}
-  zoom={center ? 4 : 2}
-  scrollWheelZoom={false}
+  zoom={center ? 10 : 12}
+  scrollWheelZoom={true}
   className="h-[35vh] rounded-lg"
   >
       <TileLayer url={url} attribution={attribution} />

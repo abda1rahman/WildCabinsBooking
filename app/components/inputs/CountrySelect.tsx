@@ -1,13 +1,18 @@
 "use client";
 
-import useCountries from "@/app/hooks/useCountries";
+import {
+  ICountry,
+  JordanCityList,
+  fetchJordanCountry,
+} from "@/app/hooks/useCountry";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
+
 export type CountrySelectValue = {
-  flag: string;
-  label: string;
+  state: string;
   latlng: number[];
-  region: string;
-  value: string;
+  id: number;
 };
 
 interface CountrySelectProps {
@@ -16,26 +21,39 @@ interface CountrySelectProps {
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
-  const { getAll } = useCountries();
+  const [CountryInfo, setCountryInfo] = useState<ICountry>();
+
+  // Get country jordan info
+  useEffect(() => {
+    const fetchCountry = async () => {
+      const res = await fetchJordanCountry();
+      setCountryInfo(res);
+    };
+
+    if (!CountryInfo) {
+      fetchCountry();
+    }
+  }, [CountryInfo]);
+  console.log(CountryInfo);
   return (
-    <div>
+    <div className='relative'>
       <Select
-        placeholder='Anywhere'
+        placeholder={`${"   "} AnyWhere`}
         isClearable
-        options={getAll()}
+        options={JordanCityList}
         value={value}
         onChange={(value) => onChange(value as CountrySelectValue)}
         formatOptionLabel={(option: CountrySelectValue) => (
-          <div className="flex flex-row items-center gap-3 ">
-            <div>{option.flag}</div>
+          <div className='flex flex-row items-center gap-3 '>
+            <div>{option.id}</div>
             <div>
-              {option.label},
-              <span className="ml-1 text-neutral-500">{option.region}</span>
+              {option.state},
+              {/* <span className="ml-1 text-neutral-500">{option.state}</span> */}
             </div>
           </div>
         )}
         classNames={{
-          control: () => "p-3 border-2",
+          control: () => "p-3 border-2 pl-6",
           input: () => "text-lg",
           option: () => "text-lg",
         }}
@@ -47,8 +65,21 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
             primary: "black",
             primary25: "#ffe436",
           },
+          
         })}
       />
+      {/* Logo Jordan */}
+      <div className='absolute bg-white top-[1.56rem] left-4 w-10 h-8'>
+        {CountryInfo?.flag && (
+          <Image
+            className='object-cover rounded-sm'
+            src={`${CountryInfo.flag}`}
+            alt='logo'
+            height={100}
+            width={30}
+          />
+        )}
+      </div>
     </div>
   );
 };

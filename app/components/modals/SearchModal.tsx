@@ -3,7 +3,7 @@
 import useSearchModal from "@/app/hooks/useSearchModal";
 import Modal from "./Modal";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Range } from "react-date-range";
 import dynamic from "next/dynamic";
 import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
@@ -23,7 +23,6 @@ const SearchModal = () => {
   const router = useRouter();
   const params = useSearchParams();
   const serachModal = useSearchModal();
-
   const [location, setLocation] = useState<CountrySelectValue>();
   const [step, setStep] = useState(STEPS.LOCATION);
   const [guestCount, setGuestCount] = useState(1);
@@ -34,6 +33,7 @@ const SearchModal = () => {
     endDate: new Date(),
     key: "selection",
   });
+
 
   const Map = useMemo(
     () =>
@@ -53,20 +53,16 @@ const SearchModal = () => {
 
   const onSubmit = useCallback(async () => {
     if (step !== STEPS.INFO) return onNext();
-
     let currentQuery = {};
 
     if (params) currentQuery = qs.parse(params.toString());
-    console.log("current Query value = ",currentQuery)
     const updatedQuery: any = {
       ...currentQuery,
-      locationValue: location?.value,
+      locationValue: location?.state,
       guestCount,
       roomCount,
       bathroomCount,
     };
-    console.log("updatedQuery value = ",updatedQuery)
-
     if (dateRange.startDate)
       updatedQuery.startDate = formatISO(dateRange.startDate);
 
@@ -79,7 +75,6 @@ const SearchModal = () => {
       },
       { skipNull: true }
     );
-
     setStep(STEPS.LOCATION);
     serachModal.onClose();
     router.push(url);
