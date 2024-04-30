@@ -10,6 +10,7 @@ import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
 import dynamic from "next/dynamic";
 
+export const fetchCache = "force-no-store";
 
 export const metadata: Metadata = {
   title: "Cabins",
