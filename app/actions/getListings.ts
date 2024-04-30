@@ -37,7 +37,7 @@ export default async function getListings(params: IListingsParams) {
 
     if (bathroomCount) query.bathroomCount = { gte: +bathroomCount };
 
-    if (locationValue) query.locationValue = locationValue 
+    if (locationValue) query.locationValue = locationValue;
 
     if (startDate && endDate) {
       query.NOT = {
@@ -65,12 +65,12 @@ export default async function getListings(params: IListingsParams) {
       },
     });
 
-    // const safeListings = listings.map((listing)=> ({
-    //   ...listing,
-    //   createAt: listing.createAt.toISOString(),
-    // }))
+    const safeListings = listings.map((listing)=> ({
+      ...listing,
+      createdAt: listing.createdAt.toISOString(),
+    }))
 
-    return listings;
+    return safeListings;
   } catch (error: any) {
     throw new Error("Error get listings");
   }
