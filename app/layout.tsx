@@ -8,6 +8,7 @@ import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
+import dynamic from "next/dynamic";
 
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ const font = Nunito({
   subsets: ["latin"],
 });
 
-export default async function RootLayout({
+ async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -42,3 +43,5 @@ const currentUser = await getCurrentUser()
     </html>
   );
 }
+
+export default dynamic(() => Promise.resolve(RootLayout), { ssr: false })
