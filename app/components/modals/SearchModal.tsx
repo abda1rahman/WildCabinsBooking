@@ -146,7 +146,7 @@ const SearchModal = () => {
         />
         <hr />
         <Counter
-          onChange={(value) => setRoomCount(value)}
+          onChange={(x) => setRoomCount(x)}
           value={roomCount}
           title='Rooms'
           subtitle='How many rooms do you need?'

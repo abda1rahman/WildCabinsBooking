@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useCallback } from "react";
+import { useEffect, useState } from "react";
 
 export interface ICountry {
   value: string;
@@ -11,28 +10,49 @@ export interface ICountry {
   region: string;
 }
 
-export async function fetchJordanCountry() {
-  try {
-    const res = await fetch("https://restcountries.com/v3.1/name/jordan");
-    const data = await res.json();
+// This hook to get details Jordan country;
+const useCountryInfo = (Country = "jordan") => {
 
-    if (!data || data.length === 0) {
-      throw new Error("No data received from the API");
+  const [countryInfo, setCountryInfo] = useState<ICountry>();
+  const [isMounted, setIsMounted] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://restcountries.com/v3.1/name/${Country}`
+        );
+        const data = await res.json();
+
+        if (!data || data.length === 0) {
+          throw new Error("No data received from the API");
+        }
+        const countryInfo = data[0]; // Access the first country info object
+
+        setCountryInfo({
+          value: countryInfo?.cca2 || "",
+          label: countryInfo?.name?.common || "",
+          flag: countryInfo?.flags?.png || "",
+          latlng: countryInfo?.latlng || [],
+          region: countryInfo?.region || "",
+        });
+      } catch (error) {
+        throw new Error(); // Rethrow the error to handle it in the component using this hook
+      }
+    };
+
+    if (isMounted) {
+      fetchData();
+      setIsMounted(false);
     }
 
-    const countryInfo = data[0]; // Access the first country info object
+    return () => setIsMounted(false);
+  }, [Country, isMounted]);
 
-    return {
-      value: countryInfo?.cca2 || "",
-      label: countryInfo?.name?.common || "",
-      flag: countryInfo?.flags?.png || "",
-      latlng: countryInfo?.latlng || [],
-      region: countryInfo?.region || "",
-    };
-  } catch (error) {
-    throw new Error(); // Rethrow the error to handle it in the component using this hook
-  }
-}
+  return { countryInfo };
+};
+
+export default useCountryInfo;
 
 export const JordanCityList = [
   { id: 1, state: "Amman", latlng: [31.963158, 35.930359] },
@@ -48,18 +68,3 @@ export const JordanCityList = [
   { id: 11, state: "Balqa", latlng: [32.034722, 35.723889] },
   { id: 12, state: "Ajloun", latlng: [32.333333, 35.752778] },
 ];
-
-// const useCountry = () => {
-//   const getAllCity = () => JordanCityList;
-
-//   // const getCountryInfo =  () =>   useFormatJordanCountry;
-
-//   useFormatJordanCountry;
-
-//   return {
-//     getAllCity,
-//     useFormatJordanCountry,
-//   };
-// };
-
-// export default useCountry;

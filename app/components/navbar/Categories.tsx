@@ -55,11 +55,6 @@ export const categories = [
     description: "This property is near a lake!",
   },
   {
-    label: "Skiing",
-    icon: FaSkiing,
-    description: "This property has skiing activies!",
-  },
-  {
     label: "Castles",
     icon: GiCastle,
     description: "This property is an ancient castle!",
@@ -75,19 +70,9 @@ export const categories = [
     description: "This property offers camping activities!",
   },
   {
-    label: "Arctic",
-    icon: BsSnow,
-    description: "This property is in arctic environment!",
-  },
-  {
     label: "Desert",
     icon: GiCactus,
     description: "This property is in the desert!",
-  },
-  {
-    label: "Barns",
-    icon: GiBarn,
-    description: "This property is in a barn!",
   },
   {
     label: "Lux",

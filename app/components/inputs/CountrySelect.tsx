@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  ICountry,
-  JordanCityList,
-  fetchJordanCountry,
-} from "@/app/hooks/useCountry";
+
+import useCountryInfo, { ICountry, JordanCityList } from "@/app/hooks/useCountry";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
@@ -21,24 +18,13 @@ interface CountrySelectProps {
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
-  const [CountryInfo, setCountryInfo] = useState<ICountry>();
 
   // Get country jordan info
-  useEffect(() => {
-    const fetchCountry = async () => {
-      const res = await fetchJordanCountry();
-      setCountryInfo(res);
-    };
-
-    if (!CountryInfo) {
-      fetchCountry();
-    }
-  }, [CountryInfo]);
-  console.log(CountryInfo);
+  const {countryInfo} = useCountryInfo()
   return (
     <div className='relative'>
       <Select
-        placeholder={`${"   "} AnyWhere`}
+        placeholder={`\u00A0\u00A0\u00A0\u00A0\u00A0AnyWhere`}
         isClearable
         options={JordanCityList}
         value={value}
@@ -48,7 +34,6 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
             <div>{option.id}</div>
             <div>
               {option.state},
-              {/* <span className="ml-1 text-neutral-500">{option.state}</span> */}
             </div>
           </div>
         )}
@@ -65,15 +50,14 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
             primary: "black",
             primary25: "#ffe436",
           },
-          
         })}
       />
       {/* Logo Jordan */}
       <div className='absolute bg-white top-[1.56rem] left-4 w-10 h-8'>
-        {CountryInfo?.flag && (
+        {countryInfo?.flag && (
           <Image
             className='object-cover rounded-sm'
-            src={`${CountryInfo.flag}`}
+            src={`${countryInfo.flag}`}
             alt='logo'
             height={100}
             width={30}

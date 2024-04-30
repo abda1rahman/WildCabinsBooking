@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
   hover:opacity-80
   transition
   w-full
-  ${outline ? "bg-white" : "bg-greenColor"}
+  ${outline ? "bg-white" : (label !== "Delete property" && label !== "Cancel reservation") ? "bg-greenColor" : "bg-rose-500"}
   ${outline ? "border-[#065f46]" : "border-greenColor"}
   ${outline ? "text-black" : "text-white"}
   ${small ? "py-1" : "py-3 "}

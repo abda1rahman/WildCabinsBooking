@@ -15,10 +15,6 @@ body,
   z-index: 0 !important;
 }
 
-#react-select-3-placeholder {
-  @apply pl-6;
-}
-
 .rdrMonth {
   width: 100% !important;
 }

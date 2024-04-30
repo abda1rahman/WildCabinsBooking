@@ -6,12 +6,12 @@ import { BiSearch } from "react-icons/bi";
 import { differenceInDays } from "date-fns";
 
 import useSearchModal from "@/app/hooks/useSearchModal";
-import useCountries from "@/app/hooks/useCountries";
+import { JordanCityList } from "@/app/hooks/useCountry";
 
 const Search = () => {
   const searchModal = useSearchModal();
   const params = useSearchParams();
-  const { getByValue } = useCountries();
+  
 
   const locationValue = params?.get("locationValue");
   const startDate = params?.get("startDate");
@@ -20,11 +20,11 @@ const Search = () => {
 
   const locationLabel = useMemo(() => {
     if (locationValue) {
-      return getByValue(locationValue as string)?.label;
+      return JordanCityList.find(city=> city.state === locationValue)?.state;
     }
 
     return "Anywhere";
-  }, [locationValue, getByValue]);
+  }, [locationValue]);
 
   const durationLabel = useMemo(() => {
     if (startDate && endDate) {
