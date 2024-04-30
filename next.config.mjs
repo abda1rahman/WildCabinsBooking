@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
   eslint: {
-      ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true,
   },
   images: {
     domains: [
