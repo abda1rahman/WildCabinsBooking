@@ -24,7 +24,7 @@ const TripPage = async () => {
 
   return <TripClient 
   reservations={reservations}
-  currenUser={currentUser}
+  currentUser={currentUser}
   />
 };
 

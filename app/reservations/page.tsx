@@ -4,8 +4,7 @@ import ClientOnly from "@/app/components/ClientOnly";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
 import ReservationsClient from "./ReservationsClient";
-import { safeReservations } from "../types";
-import { Reservation } from "@prisma/client";
+
 
 // import TripsClient from "./ReservationsClient";
 
