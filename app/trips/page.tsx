@@ -1,3 +1,4 @@
+import { Reservation } from "@prisma/client";
 import getCurrentUser from "../actions/getCurrentUser";
 import getReservations from "../actions/getReservations";
 import EmptyState from "../components/EmptyState";
@@ -23,7 +24,7 @@ const TripPage = async () => {
 
   return <TripClient 
   reservations={reservations}
-  currenUser={currentUser}
+  currentUser={currentUser}
   />
 };
 

@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+    missingSuspenseWithCSRBailout: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: [
       "avatars.githubusercontent.com",

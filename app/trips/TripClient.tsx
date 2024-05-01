@@ -11,7 +11,7 @@ import ListingCard from "../components/listings/ListingCard";
 
 interface TripClientProps {
   reservations: safeReservations[];
-  currentUser: SafeUser;
+  currentUser?: SafeUser | null;
 }
 
 const TripClient: React.FC<TripClientProps> = ({
@@ -29,14 +29,14 @@ const TripClient: React.FC<TripClientProps> = ({
         .delete(`/api/reservations/${id}`)
         .then(() => {
           toast.success("Reservation cancelled");
-          router.refresh()
+          router.refresh();
         })
         .catch((error: any) => {
           toast.error(error?.response?.data?.error);
         })
-        .finally(()=> {
-          setDeletingId('')
-        })
+        .finally(() => {
+          setDeletingId("");
+        });
     },
     [setDeletingId, router]
   );
@@ -47,16 +47,16 @@ const TripClient: React.FC<TripClientProps> = ({
         subtitle="Where you've been adn where you're going "
       />
       <div className='mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-        {reservations.map((reservation)=>(
-          <ListingCard 
-          key={reservation.id}
-          data={reservation.listing}
-          reservation={reservation}
-          actionId={reservation.id}
-          onAction={onCancel}
-          disabled={deletingId === reservation.id} 
-          actionLabel="Cancel reservation"
-          currentUser={currentUser}
+        {reservations.map((reservation: any) => (
+          <ListingCard
+            key={reservation.id}
+            data={reservation.listing}
+            reservation={reservation}
+            actionId={reservation.id}
+            onAction={onCancel}
+            disabled={deletingId === reservation.id}
+            actionLabel='Cancel reservation'
+            currentUser={currentUser}
           />
         ))}
       </div>

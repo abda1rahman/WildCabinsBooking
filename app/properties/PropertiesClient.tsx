@@ -13,8 +13,8 @@ import ListingCard from "@/app/components/listings/ListingCard";
 import { Listing } from "@prisma/client";
 
 interface PropertiesClientProps {
-  listings: Listing[];
-  currentUser?: SafeUser;
+  listings: safeListing[];
+  currentUser?: SafeUser | null;
 }
 
 const PropertiesClient: React.FC<PropertiesClientProps> = ({
