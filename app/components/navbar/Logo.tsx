@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 function Logo() {
   const router = useRouter();
   return (
-    <div className='object-fill w-36 h-14 hidden sm:block'>
+    <div className='flex items-center justify-center object-fill h-full w-full md:w-36 md:h-14'>
       <Image
         onClick={() => router.push("/")}
         alt='Logo'
-        className='hidden md:block cursor-pointer object-fill w-full h-full'
+        className='cursor-pointer object-cover'
         height={100}
         width={100}
         src='/images/logo.png'
