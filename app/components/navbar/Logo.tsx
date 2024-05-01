@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 function Logo() {
   const router = useRouter();
   return (
-    <div className='object-fill w-36 h-14 '>
+    <div className='flex items-center justify-center object-fill h-full w-full md:w-36 md:h-14'>
       <Image
         onClick={() => router.push("/")}
         alt='Logo'
