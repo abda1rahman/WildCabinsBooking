@@ -49,18 +49,17 @@ npm run dev
 
 ## Image Previews
 
-<table style="width: 100%;">
+<table>
   <tr>
-    <td align="center" style="padding: 10px; ;">
-      <img src="https://private-user-images.githubusercontent.com/115384907/327417757-83f4fd63-63ac-4578-94ef-a1bbd174840a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ2NTA5MzksIm5iZiI6MTcxNDY1MDYzOSwicGF0aCI6Ii8xMTUzODQ5MDcvMzI3NDE3NzU3LTgzZjRmZDYzLTYzYWMtNDU3OC05NGVmLWExYmJkMTc0ODQwYS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUwMlQxMTUwMzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iNzc5N2ZjOTEyNmM3NThlOGVkNDY4NGUzMTM4MDExNTZlMDYyMzI3MjgwMjAwNDJiMmIzMTE2ZGM2OWYyMDI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.Y1ZPRRVsU8YFPuJGl9zc6RO0jF9DxHJ2d6epVH4C3mw" alt="Image 1" style="width: 200px; height: auto;" />
-      <div style="display: inline-block; vertical-align: top; margin-top:  20px"><b>Image 1 Caption</b></div>
-    </td>
-    <td align="center" style="padding: 10px; vertical-align: top;">
-      <img src="https://private-user-images.githubusercontent.com/115384907/327417763-e58cb763-2eb0-42cc-84c8-147c8a2c135d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ2NTA5MzksIm5iZiI6MTcxNDY1MDYzOSwicGF0aCI6Ii8xMTUzODQ5MDcvMzI3NDE3NzYzLWU1OGNiNzYzLTJlYjAtNDJjYy04NGM4LTE0N2M4YTJjMTM1ZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUwMlQxMTUwMzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NWQwYzRhOGY2MzhiM2FiMWM1YTI0YTgzZjk4NTBmMDliMmQ5ZTA5NWNjNGYyOWFkNTc2NGVhYWYzZmNlZjQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.s9cWreY0Kar_9dDzzKbQl3tvFXcKjyRxNpuRntxwVaM" alt="Image 2" style="width: 100%; height: auto; max-width: 500px;" />
-      <div style="display: inline-block; vertical-align: top; margin-top:  43px; "><b>Image 2 Caption</b></div>
-    </td>
+    <td>First Screen Page</td>
+     <td>Holiday Mention</td>
   </tr>
-</table>
+  <tr>
+    <td><img src="https://private-user-images.githubusercontent.com/115384907/327417757-83f4fd63-63ac-4578-94ef-a1bbd174840a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ2NTA5MzksIm5iZiI6MTcxNDY1MDYzOSwicGF0aCI6Ii8xMTUzODQ5MDcvMzI3NDE3NzU3LTgzZjRmZDYzLTYzYWMtNDU3OC05NGVmLWExYmJkMTc0ODQwYS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUwMlQxMTUwMzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iNzc5N2ZjOTEyNmM3NThlOGVkNDY4NGUzMTM4MDExNTZlMDYyMzI3MjgwMjAwNDJiMmIzMTE2ZGM2OWYyMDI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.Y1ZPRRVsU8YFPuJGl9zc6RO0jF9DxHJ2d6epVH4C3mw" width=250 height=350></td>
+    <td><img src="https://private-user-images.githubusercontent.com/115384907/327417763-e58cb763-2eb0-42cc-84c8-147c8a2c135d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTQ2NTA5MzksIm5iZiI6MTcxNDY1MDYzOSwicGF0aCI6Ii8xMTUzODQ5MDcvMzI3NDE3NzYzLWU1OGNiNzYzLTJlYjAtNDJjYy04NGM4LTE0N2M4YTJjMTM1ZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDUwMlQxMTUwMzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NWQwYzRhOGY2MzhiM2FiMWM1YTI0YTgzZjk4NTBmMDliMmQ5ZTA5NWNjNGYyOWFkNTc2NGVhYWYzZmNlZjQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.s9cWreY0Kar_9dDzzKbQl3tvFXcKjyRxNpuRntxwVaM" width=100% height=400></td>
+
+  </tr>
+ </table>
 
 <br/>
 
