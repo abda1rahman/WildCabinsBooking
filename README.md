@@ -35,9 +35,9 @@ npm run dev
 4. Access the application at http://localhost:3000
 
 ## Technologies Used
-**Frontend**: Next.js, TypeScript, Tailwind CSS
-**Backend**: MongoDB, Prisma ORM
-**Authentication**: NextAuth.js (supports Google OAuth and GitHub OAuth)
+- **Frontend**: Next.js, TypeScript, Tailwind CSS
+- **Backend**: MongoDB, Prisma ORM
+- **Authentication**: NextAuth.js (supports Google OAuth and GitHub OAuth)
 
 ## Features
 
