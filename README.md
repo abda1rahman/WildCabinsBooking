@@ -56,4 +56,4 @@ npm run dev
 
 You can try out the live demo of the Cabins Booking Project by visiting the following link:
 
-[Live Demo](https://cabins-booking-app.vercel.app/)
+[Live Demo](https://cabins-booking-sys.vercel.app)
