@@ -8,7 +8,7 @@ import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
-import dynamic from "next/dynamic";
+export const dynamic = "force-dynamic";
 
 export const fetchCache = "force-no-store";
 
@@ -21,28 +21,25 @@ const font = Nunito({
   subsets: ["latin"],
 });
 
- async function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-const currentUser = await getCurrentUser()
+  const currentUser = await getCurrentUser();
 
   return (
     <html lang='en'>
       <body className={font.className}>
         <ToasterProvider />
         <SearchModal />
-        <RentModal/>
+        <RentModal />
         <LoginModal />
         <RegisterModal />
-        <Navbar currentUser={currentUser}/>
-        <div className="pb-20 pt-28">
-        {children}
-        </div>
-        </body>
+        <Navbar currentUser={currentUser} />
+        <div className='pb-20 pt-28'>{children}</div>
+      </body>
     </html>
   );
 }
 
-export default dynamic(() => Promise.resolve(RootLayout), { ssr: false })
