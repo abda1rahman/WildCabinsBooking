@@ -5,7 +5,7 @@ import EmptyState from "../components/EmptyState";
 import PropertiesClient from "./PropertiesClient";
 
 const PropertiesPage = async () => {
-  const currentUser: any = getCurrentUser();
+  const currentUser: any = await getCurrentUser();
 
   if (!currentUser) {
     return <EmptyState title='Unauthorized' subtitle='Please login' />;

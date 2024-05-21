@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-    missingSuspenseWithCSRBailout: false,
-  },
+  // experimental: {
+  //   appDir: true,
+  //   missingSuspenseWithCSRBailout: false,
+  // },
   eslint: {
     ignoreDuringBuilds: true,
   },
