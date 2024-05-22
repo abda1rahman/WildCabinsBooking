@@ -10,7 +10,6 @@ import { safeListing, SafeUser } from "@/app/types";
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
-import { Listing } from "@prisma/client";
 
 interface PropertiesClientProps {
   listings: safeListing[];
