@@ -9,7 +9,7 @@ function Logo() {
       <Image
         onClick={() => router.push("/")}
         alt='Logo'
-        className='cursor-pointer object-cover'
+        className='logo-container cursor-pointer object-cover hover:transition-all hover:duration-150 hover:scale-110 md:hover:opacity-80'
         height={100}
         width={100}
         src='/images/logo.png'

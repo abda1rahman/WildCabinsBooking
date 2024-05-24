@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
@@ -10,6 +10,7 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
+import useCloseOutsideModel from "@/app/hooks/useCloseOutsideModel";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -22,6 +23,8 @@ function UserMenu({ currentUser }: UserMenuProps) {
   const rentModal = useRentModal();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const menuRef = useCloseOutsideModel({ isOpen, setIsOpen });
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -57,7 +60,9 @@ function UserMenu({ currentUser }: UserMenuProps) {
       </div>
 
       {isOpen && (
-        <div className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
+        <div 
+        ref={menuRef}
+        className='absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm'>
           <div className='flex flex-col cursor-pointer'>
             {currentUser ? (
               <>
