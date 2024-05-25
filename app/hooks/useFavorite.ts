@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { SafeUser } from "../types";
 import useLoginModal from "./useLoginModal";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -13,6 +13,7 @@ interface IUseFavorite {
 const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const [isLoading, setIsLoading] = useState(false)
 
   const hasFavorited = useMemo(() => {
     const list = currentUser?.favoriteIds || [];
@@ -22,6 +23,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
 
   const toggleFavorite = useCallback(
     async (e: React.MouseEvent<HTMLDivElement>) => {
+
       e.stopPropagation();
 
       if (!currentUser) {
@@ -29,6 +31,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
       }
 
       try {
+        setIsLoading(true);
         let request;
 
         if (hasFavorited) {
@@ -42,6 +45,8 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
         toast.success("Success");
       } catch (error) {
         toast.error("Something went wrong.");
+      } finally{
+        setIsLoading(false);
       }
     },
     [currentUser, hasFavorited, listingId, loginModal, router]
@@ -50,6 +55,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
   return {
     hasFavorited,
     toggleFavorite,
+    isLoading
   };
 };
 

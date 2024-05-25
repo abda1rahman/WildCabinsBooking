@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Listing, Reservation, User } from "@prisma/client";
 
 import { SafeUser, safeListing, safeReservations } from "@/app/types";
 import { useCallback, useMemo } from "react";
@@ -9,6 +8,8 @@ import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
+import Confirmation from "../modals/ConfirmationModal";
+import useConfirmModal from "../../hooks/useConfirmModal";
 
 interface ListingCardProps {
   data: safeListing;
@@ -30,8 +31,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
+  const comfirmModal = useConfirmModal();
 
-  const location = data?.locationValue
+  const location = data?.locationValue;
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -78,28 +80,29 @@ const ListingCard: React.FC<ListingCardProps> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">
-          {location}, Jordan
-        </div>
-        <div className="font-light text-neutral-500">
+        <div className='font-semibold text-lg'>{location}, Jordan</div>
+        <div className='font-light text-neutral-500'>
           {reservationDate || data.category}
         </div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">
-        JD {price}
-          </div>
-            {!reservation && (
-              <div className="font-light">night</div>
-            )}
+        <div className='flex flex-row items-center gap-1'>
+          <div className='font-semibold'>JD {price}</div>
+          {!reservation && <div className='font-light'>night</div>}
         </div>
         {onAction && actionLabel && (
-          <Button 
+          <Button
             disable={disabled}
             small
             label={actionLabel}
-            onClick={handleCancel}
+            onClick={(e) => {
+              e.stopPropagation();
+              comfirmModal.onOpen();
+            }}
           />
         )}
+        <Confirmation
+          onConfirm={handleCancel}
+          title='Are you sure to delete this'
+        />
       </div>
     </div>
   );
