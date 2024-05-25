@@ -1,12 +1,10 @@
 import getCurrentUser from "../actions/getCurrentUser";
 import getListings from "../actions/getListings";
-import getReservations from "../actions/getReservations";
 import EmptyState from "../components/EmptyState";
 import PropertiesClient from "./PropertiesClient";
 
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser();
-
   if (!currentUser) {
     return <EmptyState title='Unauthorized' subtitle='Please login' />;
   }
@@ -15,7 +13,7 @@ const PropertiesPage = async () => {
     userId: currentUser.id,
   });
 
-  if (getReservations.length === 0) {
+  if (listings.length === 0) {
     return (
       <EmptyState
         title='No properties found'
