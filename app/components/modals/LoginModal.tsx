@@ -116,7 +116,7 @@ function LoginModal() {
       disabled={isLoading}
       isOpen={loginModal.isOpen}
       title='Login'
-      actionLabel='Countinue'
+      actionLabel='Continue'
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

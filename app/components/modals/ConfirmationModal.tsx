@@ -16,22 +16,30 @@ const Confirmation = ({ title, onConfirm }: Props) => {
     comfirmModal.onClose();
   };
 
+  const handleCloseModal = (e: React.MouseEvent) => {
+    // Stop event propagation to prevent it from reaching the parent container
+    e.stopPropagation();
+    // Close the modal
+    comfirmModal.onClose();
+  };
+
   if (!comfirmModal.isOpen) {
     return <></>;
   }
   return (
-    <div className='fixed flex items-center justify-center z-10 inset-0 bg-black opacity-50'>
-      <div className='bg-white rounded-lg shadow-lg p-6'>
-        <p className='text-lg mb-4'>{title}</p>
-        <div className='flex justify-end space-x-4'>
-          <Button
-            label='Cancel'
-            onClick={(e) => {
-              e.stopPropagation();
-              comfirmModal.onClose();
-            }}
-          />
-          <Button label='Delete' onClick={hancleAction} />
+    <div
+      onClick={handleCloseModal}
+      className='fixed flex items-center justify-center z-10 inset-0 bg-neutral-800/70'
+    >
+      <div className='w-full md:w-4/6 lg:w-3/6 xl:w-3/6'>
+        <div className='w-full h-full   flex   flex-col bg-white rounded-lg shadow-lg p-6'>
+          <div className='flex p-2 items-center mx-auto  rounded-t'>
+            <p className='text-lg font-bold mb-4 '>{title}</p>
+          </div>
+          <div className='flex justify-end space-x-4'>
+            <Button outline label='Close' onClick={handleCloseModal} />
+            <Button label='Delete' onClick={hancleAction} />
+          </div>
         </div>
       </div>
     </div>

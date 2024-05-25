@@ -101,7 +101,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         )}
         <Confirmation
           onConfirm={handleCancel}
-          title='Are you sure to delete this'
+          title='Are you sure to delete ?'
         />
       </div>
     </div>

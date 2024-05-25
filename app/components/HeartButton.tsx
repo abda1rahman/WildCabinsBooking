@@ -23,7 +23,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({
   if (isLoading) {
     return (
       <div className=''>
-        <SyncLoader color='#F33A6A' size={8} speedMultiplier={1} />
+        <SyncLoader color='#FAF9F6' size={8} speedMultiplier={1} />
       </div>
     );
   }

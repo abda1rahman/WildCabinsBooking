@@ -19,6 +19,9 @@ const Button: React.FC<ButtonProps> = ({
   small,
   icon: Icon,
 }) => {
+  const ColorRed =
+    label.toLowerCase().includes("delete") ||
+    label.toLowerCase().includes("cancel");
   return (
     <button
       disabled={disable}
@@ -31,8 +34,8 @@ const Button: React.FC<ButtonProps> = ({
   hover:opacity-80
   transition
   w-full
-  ${outline ? "bg-white" : (label !== "Delete property" && label !== "Cancel reservation") ? "bg-greenColor" : "bg-rose-500"}
-  ${outline ? "border-[#065f46]" : "border-greenColor"}
+  ${outline ? "bg-white" : ColorRed ? "bg-rose-500" : "bg-greenColor"}
+  ${!ColorRed && (outline ? "border-zinc-400" : "border-greenColor")}
   ${outline ? "text-black" : "text-white"}
   ${small ? "py-1" : "py-3 "}
   ${small ? "text-sm" : "text-md "}
