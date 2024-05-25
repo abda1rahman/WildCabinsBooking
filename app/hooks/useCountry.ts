@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface ICountry {
   value: string;
   label: string;
   flag: {
-    png: string;
+    png: string ;
   };
   latlng: number[];
   region: string;
@@ -12,33 +12,42 @@ export interface ICountry {
 
 // This hook to get details Jordan country;
 const useCountryInfo = (Country = "jordan") => {
+
   const [countryInfo, setCountryInfo] = useState<ICountry>();
-
-  const fetchData = useCallback(async () => {
-    try {
-      const res = await fetch(`https://restcountries.com/v3.1/name/${Country}`);
-      const data = await res.json();
-
-      if (!data || data.length === 0) {
-        throw new Error("No data received from the API");
-      }
-      const countryInfo = data[0]; // Access the first country info object
-
-      setCountryInfo({
-        value: countryInfo?.cca2 || "",
-        label: countryInfo?.name?.common || "",
-        flag: countryInfo?.flags?.png || "",
-        latlng: countryInfo?.latlng || [],
-        region: countryInfo?.region || "",
-      });
-    } catch (error) {
-      throw new Error(); // Rethrow the error to handle it in the component using this hook
-    }
-  }, [Country]);
+  const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    fetchData()
-  }, [Country]);
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://restcountries.com/v3.1/name/${Country}`
+        );
+        const data = await res.json();
+
+        if (!data || data.length === 0) {
+          throw new Error("No data received from the API");
+        }
+        const countryInfo = data[0]; // Access the first country info object
+
+        setCountryInfo({
+          value: countryInfo?.cca2 || "",
+          label: countryInfo?.name?.common || "",
+          flag: countryInfo?.flags?.png || "",
+          latlng: countryInfo?.latlng || [],
+          region: countryInfo?.region || "",
+        });
+      } catch (error) {
+        throw new Error(); // Rethrow the error to handle it in the component using this hook
+      }
+    };
+
+    if (isMounted) {
+      fetchData();
+      setIsMounted(false);
+    }
+
+    return () => setIsMounted(false);
+  }, [Country, isMounted]);
 
   return { countryInfo };
 };
